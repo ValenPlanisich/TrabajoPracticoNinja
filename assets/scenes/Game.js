@@ -6,7 +6,8 @@ import {
   TRIANGULO,
   ROMBO,
   CUADRADO,
-  POINTS_PERCENTAGE, POINTS_PERCENTAGE_VALUE_START
+  POINTS_PERCENTAGE, POINTS_PERCENTAGE_VALUE_START,
+  BOMBA
 } from "../../utils.js";
 
 export default class Game extends Phaser.Scene {
@@ -21,13 +22,15 @@ export default class Game extends Phaser.Scene {
       ["Triangulo"]: { count: 0, puntos: 10 },
       ["Cuadrado"]: { count: 0, puntos: 20 },
       ["Rombo"]: { count: 0, puntos: 30 },
+      ["Bomba"]: { count: 0, puntos: -20},
+
       
 
     };
 
     this.isWinner = false;
-    this.isGameOver = false;
-    this.leftTime = 30;
+    this.isGameOver = true;
+    this.leftTime = 5;
     this.score = 0
   }
 
@@ -39,6 +42,7 @@ export default class Game extends Phaser.Scene {
     this.load.image(TRIANGULO, "./assets/images/Triangulo.png");
     this.load.image(ROMBO, "./assets/images/Rombo.png");
     this.load.image(CUADRADO, "./assets/images/Cuadrado.png");
+    this.load.image(BOMBA, "./assets/images/Bomba.png");
   }
 
   create() {

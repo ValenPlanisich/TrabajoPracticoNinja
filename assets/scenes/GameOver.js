@@ -8,7 +8,7 @@ export default class GameOver extends Phaser.Scene {
   preload() {}
 
   create() {
-    this.add.text(400, 300, "GAME OVER");
+    this.add.text(350, 300, "GAME OVER");
   }
 
   update() {}
