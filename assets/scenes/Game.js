@@ -17,14 +17,17 @@ export default class Game extends Phaser.Scene {
 
   init() {
     this.shapesRecolected = {
-      ["Triangulo"]: { count: 0, score: 10 },
-      ["Cuadrado"]: { count: 0, score: 20 },
-      ["Rombo"]: { count: 0, score: 30 },
+      ["Triangulo"]: { count: 0, puntos: 10 },
+      ["Cuadrado"]: { count: 0, puntos: 20 },
+      ["Rombo"]: { count: 0, puntos: 30 },
+      
+
     };
 
     this.isWinner = false;
     this.isGameOver = false;
     this.leftTime = 30;
+    this.score = 0
   }
 
   preload() {
@@ -50,6 +53,9 @@ export default class Game extends Phaser.Scene {
     this.platformsGroup = this.physics.add.staticGroup();
     this.platformsGroup.create(400, 568, "platform").setScale(2).refreshBody();
 
+    this.platformsGroup.create(50, 368, "platform").setScale(1).refreshBody();
+    this.platformsGroup.create(800, 368, "platform").setScale(1).refreshBody()
+
     // add shapes group
     this.shapesGroup = this.physics.add.group();
 
@@ -66,6 +72,7 @@ export default class Game extends Phaser.Scene {
       this.collectShape, // funcion que llama cuando player choca con shape
       null, //dejar fijo por ahora
       this //dejar fijo por ahora
+
     );
 
     // create cursors
@@ -80,7 +87,7 @@ export default class Game extends Phaser.Scene {
     });
 
     //add text score
-    this.scoreText = this.add.text(16, 16, "T: 0 / C: 0 / R: 0", {
+    this.scoreText = this.add.text(16, 16, "Score: ", {
       fontSize: "20px",
       fill: "#1af",
     });
@@ -130,17 +137,14 @@ export default class Game extends Phaser.Scene {
   collectShape(jugador, figuraChocada) {
     // remove shape from screen
     const shapeName = figuraChocada.texture.key;
+    this.score += this.shapesRecolected[shapeName].puntos;
+    this.shapesRecolected[shapeName].count++
     console.log("figura recolectada: " + shapeName);
     figuraChocada.disableBody(true, true);
-    this.shapesRecolected[shapeName].count++;
+    this.shapesRecolected[shapeName].count ++ ;
     // update score text
     this.scoreText.setText(
-      "T: " +
-        this.shapesRecolected[TRIANGULO].count +
-        " / C: " +
-        this.shapesRecolected[CUADRADO].count +
-        " / R: " +
-        this.shapesRecolected[ROMBO].count
+     " Score: " + this.score
     );
 
     // con template string
@@ -152,9 +156,7 @@ export default class Game extends Phaser.Scene {
     // take two of each shape
 
     if (
-      this.shapesRecolected[TRIANGULO].count >= 2 &&
-      this.shapesRecolected[CUADRADO].count >= 2 &&
-      this.shapesRecolected[ROMBO].count >= 2
+  this.score >= 100
     ) {
       this.isWinner = true;
     }
