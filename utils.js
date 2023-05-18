@@ -10,7 +10,6 @@ const TRIANGULO = "Triangulo";
 const CUADRADO = "Cuadrado";
 const ROMBO = "Rombo";
 const BOMBA = "Bomba";
-w
 const SHAPES = [TRIANGULO, CUADRADO, ROMBO, BOMBA];
 const POINTS_PERCENTAGE= "value";
 const POINTS_PERCENTAGE_VALUE_START = 1;

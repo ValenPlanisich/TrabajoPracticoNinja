@@ -29,13 +29,13 @@ export default class Game extends Phaser.Scene {
     };
 
     this.isWinner = false;
-    this.isGameOver = true;
-    this.leftTime = 5;
+    this.isGameOver = false;
+    this.leftTime = 30;
     this.score = 0
   }
 
   preload() {
-    // cargar fondo, plataformas, formas, jugador
+    // cargar fondo, plataformas, fodrmas, jugador
     this.load.image("sky", "./assets/images/Cielo.png");
     this.load.image("platform", "./assets/images/platform.png");
     this.load.image("player", "./assets/images/Ninja.png");
