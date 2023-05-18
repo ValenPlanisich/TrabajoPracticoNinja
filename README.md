@@ -1,5 +1,5 @@
-# Phaser 3 Template
+Videojuego Ninja Moncho
 
-Plantilla para iniciar nuevos proyectos con PHASER 3.
+Soy Valentin Planisich y este es el viderojuego que programe para la materia programacion, de la carrera de Desarrollo de videojuegos de la UNRaf
 
-Contiene configuración inicial y buenas prácticas de estructuras de carpetas.
+
